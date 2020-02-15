@@ -15,6 +15,9 @@ app.use('/prices', getPricesRoute);
 // Start to listening for requests
 app.listen(PORT);
 // Connect to MongoDB
-mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, () => {
-    console.log('Connect to DB using mongoose')
+mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, (err) => {
+    if (err)
+        console.log(err);
+    else
+        console.log('Connect to DB using mongoose')
 });
