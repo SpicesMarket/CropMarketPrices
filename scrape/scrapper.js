@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
             });
             const priceWrapper = new Price({prices: finalJSONArray});
             priceWrapper.save()
-                .then(data => {
+                .then(() => {
                     res.send({status: 'success'});
                 })
                 .catch(err => {
