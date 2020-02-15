@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv/config');
 
 const app = express();
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Routes
 const scrapperRoute = require('./scrape/scrapper');
