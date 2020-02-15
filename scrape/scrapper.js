@@ -2,6 +2,8 @@ const express = require('express');
 const cheerio = require('cheerio');
 const request = require('request');
 
+const Price = require('../models/Price');
+
 const router = express.Router();
 const PRICES_URL = "http://kpa.org.in/";
 
@@ -25,10 +27,21 @@ router.get("/", (req, res) => {
                     spiceCosts.push($(item).text());
                 });
                 for (i = 0; i < spices.length; i++) {
-                    finalJSONArray.push({"spice": spices[i], "spicesCost": spiceCosts[i], "scrappedAt": Date.now()})
+                    finalJSONArray.push({
+                        "spice": spices[i],
+                        "spicesCost": spiceCosts[i]
+                    })
                 }
             });
-            res.send({status: 'success', data: finalJSONArray})
+            const priceWrapper = new Price({prices: finalJSONArray});
+            priceWrapper.save()
+                .then(data => {
+                    res.send({status: 'success'});
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.send({status: 'failure'})
+                });
         }
     });
 });
