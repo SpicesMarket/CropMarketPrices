@@ -10,6 +10,10 @@ app.listen(PORT);
 
 // Routes start here
 
+/**
+ * A GET request to scrape latest prices of coffee and store it in mongoDB
+ */
+
 app.get("/scrapeForPrices", (req, res) => {
     request('http://kpa.org.in/', (error, response, html) => {
         if (!error && response.statusCode === 200) {
