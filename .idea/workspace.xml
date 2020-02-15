@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4571409-26e7-4a4f-8544-f43273e17b4f" name="Default Changelist" comment=":construction: Initialized `express`">
+    <list default="true" id="e4571409-26e7-4a4f-8544-f43273e17b4f" name="Default Changelist" comment=":tada: Fetching prices from `mongoDB`">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/prices.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/prices.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +20,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="r" />
         <option value="Rohith Thammaiah &lt;thammaiahrohith@gmail.com&gt;" />
+        <option value="r" />
         <option value="Rohith Thammaiah &lt;thammaiahrohith@gmail.com?&gt;" />
       </list>
     </option>
@@ -42,6 +43,14 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
   </component>
+  <component name="RunManager">
+    <configuration name="Start" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+      <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
+        <browser start="true" url="http://localhost:3000" />
+      </EXTENSION>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -52,7 +61,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581747740574</updated>
-      <workItem from="1581747742441" duration="1443000" />
+      <workItem from="1581747742441" duration="14240000" />
     </task>
     <task id="LOCAL-00001" summary=":syringe: Added `express` and `nodemon` dependencies">
       <created>1581753845259</created>
@@ -75,7 +84,98 @@
       <option name="project" value="LOCAL" />
       <updated>1581754251427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=":zap: IDE config changes">
+      <created>1581754808943</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581754808943</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":syringe: Added `cheerio` and `request` dependencies">
+      <created>1581757074341</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581757074342</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":zap: Added `scrapeForPrices` API to scrape coffee price">
+      <created>1581757376544</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1581757376544</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":zap: Added comment">
+      <created>1581757507603</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1581757507603</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":zap: Added global variable to store website url">
+      <created>1581757791507</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581757791507</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":zap: Modularized APIs to separate files and added mongo support">
+      <created>1581765326321</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1581765326321</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":zap: Created Mongo Schema for `Prices`">
+      <created>1581766935958</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1581766935958</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":zap: Logging error if connection to `mongoDB` fails">
+      <created>1581775013090</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775013090</updated>
+    </task>
+    <task id="LOCAL-00012" summary=":confetti: Storing scrapped data in `mongoDB`">
+      <created>1581775063442</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775063442</updated>
+    </task>
+    <task id="LOCAL-00013" summary=":zap: Added Schema for `Price`">
+      <created>1581775086657</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775086657</updated>
+    </task>
+    <task id="LOCAL-00014" summary=":x: Removed unused argument">
+      <created>1581775258566</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775258566</updated>
+    </task>
+    <task id="LOCAL-00015" summary=":tada: Fetching prices from `mongoDB`">
+      <created>1581775914217</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1581775914217</updated>
+    </task>
+    <task id="LOCAL-00016" summary=":tada: init">
+      <created>1581776148949</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1581776148949</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,17 +196,82 @@
     <MESSAGE value=":syringe: Added `express` and `nodemon` dependencies" />
     <MESSAGE value=":zap: Added initial run script for `nodemon`" />
     <MESSAGE value=":construction: Initialized `express`" />
-    <option name="LAST_COMMIT_MESSAGE" value=":construction: Initialized `express`" />
+    <MESSAGE value=":zap: IDE config changes" />
+    <MESSAGE value=":syringe: Added `cheerio` and `request` dependencies" />
+    <MESSAGE value=":zap: Added `scrapeForPrices` API to scrape coffee price" />
+    <MESSAGE value=":zap: Added comment" />
+    <MESSAGE value=":zap: Added global variable to store website url" />
+    <MESSAGE value=":zap: Modularized APIs to separate files and added mongo support" />
+    <MESSAGE value=":zap: Created Mongo Schema for `Prices`" />
+    <MESSAGE value=":zap: Logging error if connection to `mongoDB` fails" />
+    <MESSAGE value=":confetti: Storing scrapped data in `mongoDB`" />
+    <MESSAGE value=":zap: Added Schema for `Price`" />
+    <MESSAGE value=":x: Removed unused argument" />
+    <MESSAGE value=":tada: Fetching prices from `mongoDB`" />
+    <MESSAGE value=":tada: init" />
+    <option name="LAST_COMMIT_MESSAGE" value=":tada: init" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="64" key="CommitChangelistDialog2" timestamp="1581754275335">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581755679587">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="303" y="64" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1581754275335" />
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1581755679587" />
+    <state x="454" y="271" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581762107231">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="454" y="271" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1581762107231" />
+    <state x="507" y="173" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1581755504175">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="507" y="173" key="#com.intellij.ide.macro.MacrosDialog/0.23.1440.877@0.23.1440.877" timestamp="1581755504175" />
+    <state x="303" y="23" width="833" height="877" key="CommitChangelistDialog2" timestamp="1581777483551">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="303" y="23" width="833" height="877" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1581777483551" />
+    <state x="505" y="374" key="GitRewordDialog" timestamp="1581754883941">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="505" y="374" key="GitRewordDialog/0.23.1440.877@0.23.1440.877" timestamp="1581754883941" />
+    <state width="1379" height="217" key="GridCell.Tab.0.bottom" timestamp="1581758153196">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1379" height="217" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1581758153196" />
+    <state width="1379" height="217" key="GridCell.Tab.0.center" timestamp="1581758153195">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1379" height="217" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1581758153195" />
+    <state width="1379" height="217" key="GridCell.Tab.0.left" timestamp="1581758153194">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1379" height="217" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1581758153194" />
+    <state width="1379" height="217" key="GridCell.Tab.0.right" timestamp="1581758153195">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1379" height="217" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1581758153195" />
+    <state x="482" y="179" key="RollbackChangesDialog" timestamp="1581762196724">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="482" y="179" key="RollbackChangesDialog/0.23.1440.877@0.23.1440.877" timestamp="1581762196724" />
     <state x="221" y="100" key="SettingsEditor" timestamp="1581754415910">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1581754415910" />
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2" timestamp="1581777437373">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="320" y="201" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1581777437373" />
+    <state x="389" y="88" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1581757625392">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="389" y="88" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.877@0.23.1440.877" timestamp="1581757625392" />
+    <state x="487" y="202" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1581776142524">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="487" y="202" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.23.1440.877@0.23.1440.877" timestamp="1581776142524" />
+    <state x="385" y="223" width="670" height="676" key="search.everywhere.popup" timestamp="1581777123880">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="223" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1581777123880" />
   </component>
 </project>
