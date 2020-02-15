@@ -4,6 +4,7 @@ const request = require('request');
 
 const app = express();
 const PORT = process.env.port || 3000;
+const PRICES_URL = "http://kpa.org.in/";
 
 // Start to listening for requests
 app.listen(PORT);
@@ -15,7 +16,7 @@ app.listen(PORT);
  */
 
 app.get("/scrapeForPrices", (req, res) => {
-    request('http://kpa.org.in/', (error, response, html) => {
+    request(PRICES_URL, (error, response, html) => {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
 
@@ -36,4 +37,11 @@ app.get("/scrapeForPrices", (req, res) => {
             res.send({status: 'success', data: finalJSONArray})
         }
     });
+});
+
+/**
+ * A GET request to fetch prices stored in mongoDB
+ */
+app.get("/prices", (req, res) => {
+
 });
