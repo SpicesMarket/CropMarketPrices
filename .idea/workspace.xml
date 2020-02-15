@@ -1,9 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e4571409-26e7-4a4f-8544-f43273e17b4f" name="Default Changelist" comment=":construction: Initialized `express`">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="r" />
+        <option value="Rohith Thammaiah &lt;thammaiahrohith@gmail.com&gt;" />
+        <option value="Rohith Thammaiah &lt;thammaiahrohith@gmail.com?&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Xpf1L9rVbyKSBSsPri9232ocQx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.CommitDialog" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e4571409-26e7-4a4f-8544-f43273e17b4f" name="Default Changelist" comment="" />
+      <created>1581747740574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581747740574</updated>
+      <workItem from="1581747742441" duration="1443000" />
+    </task>
+    <task id="LOCAL-00001" summary=":syringe: Added `express` and `nodemon` dependencies">
+      <created>1581753845259</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581753845259</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":zap: Added initial run script for `nodemon`">
+      <created>1581754089860</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1581754089860</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":construction: Initialized `express`">
+      <created>1581754251427</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581754251427</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":syringe: Added `express` and `nodemon` dependencies" />
+    <MESSAGE value=":zap: Added initial run script for `nodemon`" />
+    <MESSAGE value=":construction: Initialized `express`" />
+    <option name="LAST_COMMIT_MESSAGE" value=":construction: Initialized `express`" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="303" y="64" key="CommitChangelistDialog2" timestamp="1581754275335">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="303" y="64" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1581754275335" />
+    <state x="221" y="100" key="SettingsEditor" timestamp="1581754415910">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1581754415910" />
   </component>
 </project>
