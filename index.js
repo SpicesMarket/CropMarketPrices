@@ -15,7 +15,7 @@ app.use('/prices', getPricesRoute);
 // Start to listening for requests
 app.listen(PORT);
 // Connect to MongoDB
-mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true}, (err) => {
+mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser: true, useUnifiedTopology: true}, (err) => {
     if (err)
         console.log(err);
     else
