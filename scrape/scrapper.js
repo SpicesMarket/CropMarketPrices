@@ -28,8 +28,8 @@ router.get("/", (req, res) => {
                 });
                 for (i = 0; i < spices.length; i++) {
                     finalJSONArray.push({
-                        "spice": spices[i],
-                        "spicesCost": spiceCosts[i]
+                        "spiceName": spices[i],
+                        "spiceCost": spiceCosts[i]
                     })
                 }
             });
