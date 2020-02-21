@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
  * A GET request to fetch the latest coffee price
  */
 router.get("/latest", (req,res) => {
-   Price.find().sort({scrappedAt: -1}).limit(1)
+   Price.findOne({}).sort({scrappedAt: -1}).limit(1)
        .then((data) => {
            res.send({status: "success", data: data})
        })
