@@ -11,7 +11,7 @@ const PRICES_URL = "http://kpa.org.in/";
  * A GET request to scrape latest prices of coffee and store it in mongoDB
  */
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
     request(PRICES_URL, (error, response, html) => {
         if (!error && response.statusCode === 200) {
             const $ = cheerio.load(html);
