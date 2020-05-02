@@ -3,14 +3,21 @@ const assert = require('assert');
 const priceParser = require("../scrape/priceParser");
 
 describe('Price Scrapper', function () {
-    it ('should parse low & high price from string', function () {
+    it ('when price has a start & end value then should return two values in an array', function () {
         const testCase1 = "Rs. 8950 - 9150 / 50KG"
-        const testCase2 = "Rs. 8950 / 50KG"
-        const testCase3 = "Rs. 300 / KG"
-        const testCase4 = ""
+
         assert.deepEqual([8950, 9150], priceParser(testCase1))
-        assert.equal(8950 , priceParser(testCase2))
-        assert.equal(300 , priceParser(testCase3))
-        assert.equal(null, priceParser(testCase4))
+    })
+    it ('when price a single value then should return the same value in an array', function () {
+        const testCase1 = "Rs. 8950 / 50KG"
+        const testCase2 = "Rs. 300 / KG"
+
+        assert.deepEqual([8950] , priceParser(testCase1))
+        assert.deepEqual([300] , priceParser(testCase2))
+    })
+    it ('when price is empty then should return null', function () {
+        const testCase1 = ""
+
+        assert.equal(null, priceParser(testCase1))
     })
 })

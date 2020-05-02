@@ -10,7 +10,7 @@ module.exports =  function (unParsedPrice) {
         if (numbers.length === 3) {
             return [numbers[0], numbers[1]]
         } else if (numbers.length <= 2) {
-            return numbers[0]
+            return [numbers[0]]
         }
     }
     return  null
