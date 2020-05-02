@@ -1,6 +1,7 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const request = require('request');
+require("../Constants")
 
 const Price = require('../models/Price');
 
@@ -36,11 +37,11 @@ router.post("/", (req, res) => {
             const priceWrapper = new Price({prices: finalJSONArray});
             priceWrapper.save()
                 .then(() => {
-                    res.send({status: 'success'});
+                    res.send({status: SUCCESS});
                 })
                 .catch(err => {
                     console.log(err);
-                    res.send({status: 'failure'})
+                    res.send({status: FAILURE})
                 });
         }
     });
