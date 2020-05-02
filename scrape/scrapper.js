@@ -1,16 +1,15 @@
+require("../Constants");
+
 const express = require('express');
 const cheerio = require('cheerio');
 const request = require('request');
-require("../Constants")
 
+const priceParser = require("./priceParser");
+
+// Mongo Schemas
 const Price = require('../models/Price');
 
 const router = express.Router();
-const PRICES_URL = "http://kpa.org.in/";
-
-const INCREASE = 1;
-const IDLE = 0;
-const DECREASE = -1;
 
 /**
  * A GET request to scrape latest prices of coffee and store it in mongoDB
@@ -38,10 +37,12 @@ router.post("/", (req, res) => {
 
                 // Add each value to a JSON array
                 for (i = 0; i < spices.length; i++) {
-                    finalJSONArray.push({
+                    const spiceWithoutStatus = {
                         "spiceName": spices[i],
-                        "spiceCost": spiceCosts[i]
-                    })
+                        "spiceCost": spiceCosts[i],
+                        "average" : calculateAverage(priceParser(spiceCosts[i]))
+                    }
+                    finalJSONArray.push(spiceWithoutStatus)
                 }
 
             });
@@ -57,5 +58,15 @@ router.post("/", (req, res) => {
         }
     });
 });
+
+function calculateAverage(prices) {
+    if (prices === null || prices.length === 0) {
+        return 0
+    } else if (prices.length === 1) {
+        return prices[0]
+    } else if (prices.length === 2) {
+        return (prices[0] + prices[1]) / 2
+    }
+}
 
 module.exports = router;
