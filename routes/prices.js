@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Price = require('../models/Price');
+const LatestPrice = require('../models/LatestPrice');
+
+require("../Constants")
 
 /**
  * A GET request to fetch all coffee & pepper prices
@@ -8,11 +11,11 @@ const Price = require('../models/Price');
 router.get("/", (req, res) => {
     Price.find()
         .then((data) => {
-            res.send({status: "success", data: data})
+            res.send({status: SUCCESS, data: data})
         })
         .catch(err => {
             console.log(err);
-            res.send({status: "failure"})
+            res.send({status: FAILURE})
         });
 });
 
@@ -20,13 +23,13 @@ router.get("/", (req, res) => {
  * A GET request to fetch the latest coffee & pepper price
  */
 router.get("/latest", (req,res) => {
-   Price.findOne({}).sort({scrappedAt: -1}).limit(1)
+   LatestPrice.find({})
        .then((data) => {
-           res.send({status: "success", data: data})
+           res.send({status: SUCCESS, data: data})
        })
        .catch(err => {
            console.log(err);
-           res.send({status: "failure"})
+           res.send({status: FAILURE})
        });
 });
 
