@@ -63,7 +63,8 @@ router.post("/", (req, res) => {
                                 spiceName : spice.spiceName,
                                 spiceCost : spice.spiceCost,
                                 average : spice.average,
-                                status : IDLE
+                                status : IDLE,
+                                scrappedAt: Date.now()
                             }
                             let _latestPrice = new LatestPrice(latestPriceJSON)
                             _latestPrice.save()
@@ -81,7 +82,8 @@ router.post("/", (req, res) => {
                                 spiceName : spice.spiceName,
                                 spiceCost : spice.spiceCost,
                                 average : spice.average,
-                                status : status
+                                status : status,
+                                scrappedAt: Date.now()
                             }
                             LatestPrice.update({"spiceName": spice.spiceName}, {
                                 $set: latestPriceJSON
