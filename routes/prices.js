@@ -25,6 +25,11 @@ router.get("/", (req, res) => {
 router.get("/latest", (req,res) => {
    LatestPrice.find({})
        .then((data) => {
+           data.map(function(price) {
+               price.average = Math.round(price.average)
+               return price
+           })
+           
            res.send({status: SUCCESS, data: data})
        })
        .catch(err => {
