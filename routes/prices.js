@@ -6,7 +6,7 @@ const LatestPrice = require('../models/LatestPrice');
 require("../Constants")
 
 /**
- * A GET request to fetch all coffee & pepper prices
+ * A GET request to fetch all spices prices
  */
 router.get("/", (req, res) => {
     Price.find()
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 /**
- * A GET request to fetch the latest coffee & pepper price
+ * A GET request to fetch the latest spices price
  */
 router.get("/latest", (req,res) => {
    LatestPrice.find({})
