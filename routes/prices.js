@@ -26,6 +26,7 @@ router.get("/latest", (req,res) => {
    LatestPrice.find({})
        .then((data) => {
            data.map(function(price) {
+               // Todo Remove this has to be handled from the front-end
                price.average = Math.round(price.average)
                return price
            })
