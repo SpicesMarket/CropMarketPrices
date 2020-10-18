@@ -46,23 +46,23 @@ router.get("/v2/latest", (req, res) => {
     Price.find()
         .sort({ scrappedAt: -1 }) // Descending
         .limit(7) // Last 7 data
-        .then((data1) => {
-            let listOfUngroupedSpices = []
-            data1.forEach((spices) => {
-                spices.prices.forEach((price) => {
-                    listOfUngroupedSpices.push(price)
+        .then((lastWeekPrices) => {
+            let ungroupedSpices = []
+            lastWeekPrices.forEach((spicePrices) => {
+                spicePrices.prices.forEach((price) => {
+                    price.scrappedAt = spicePrices.scrappedAt
+                    ungroupedSpices.push(price)
                 })
             })
-
-            let group = groupBy(listOfUngroupedSpices, spice => spice.spiceName)
+            let groupedSpices = groupBy(ungroupedSpices, spice => spice.spiceName)
             LatestPrice.find({})
-                .then((data) => {
-                    data.map(function (price) {
-                        let lastWeekPrices = group.get(price.spiceName)
+                .then((latestPrices) => {
+                    latestPrices.map(function (price) {
+                        let lastWeekPrices = groupedSpices.get(price.spiceName)
                         price.graphData = lastWeekPrices
                         return price
                     })
-                    res.send({ status: SUCCESS, data: data, data1: group })
+                    res.send({ status: SUCCESS, data: latestPrices})
                 })
                 .catch(err => {
                     console.log(err);
