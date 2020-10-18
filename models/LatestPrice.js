@@ -8,7 +8,11 @@ const LatestPriceSchema = mongoose.Schema({
     scrappedAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    graphData: [{
+        average: Number,
+        scrappedAt: Date
+    }]
 })
 
 module.exports = mongoose.model('LatestPrice', LatestPriceSchema)
