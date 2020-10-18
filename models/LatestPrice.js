@@ -11,10 +11,7 @@ const LatestPriceSchema = mongoose.Schema({
     },
     graphData: [{
         average: Number,
-        scrappedAt: {
-            type: Date,
-            default: Date.now
-        }
+        scrappedAt: Date
     }]
 })
 
