@@ -5,7 +5,7 @@ const PriceSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    prices: [{ spiceName: String, spiceCost: String, average: Number, scrappedAt: Date, _id: false }]
+    prices: [{spiceName: String, spiceCost: String, average: Number, scrappedAt: Date, _id: false}]
 });
 
 module.exports = mongoose.model('Prices', PriceSchema);

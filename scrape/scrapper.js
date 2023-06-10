@@ -45,14 +45,14 @@ router.post("/", (req, res) => {
                     const spiceWithoutStatus = {
                         "spiceName": spices[i],
                         "spiceCost": spiceCosts[i],
-                        "average" : calculateAverage(priceParser(spiceCosts[i]))
+                        "average": calculateAverage(priceParser(spiceCosts[i]))
                     }
                     finalJSONArray.push(spiceWithoutStatus)
                 }
 
             });
 
-            finalJSONArray.forEach(function (spice, index){
+            finalJSONArray.forEach(function (spice, index) {
                 LatestPrice.findOne({spiceName: spice.spiceName})
                     .sort({scrappedAt: -1})
                     .limit(1)
@@ -60,10 +60,10 @@ router.post("/", (req, res) => {
                         if (!data) {
                             console.log("!data")
                             let latestPriceJSON = {
-                                spiceName : spice.spiceName,
-                                spiceCost : spice.spiceCost,
-                                average : spice.average,
-                                status : IDLE,
+                                spiceName: spice.spiceName,
+                                spiceCost: spice.spiceCost,
+                                average: spice.average,
+                                status: IDLE,
                                 scrappedAt: Date.now()
                             }
                             let _latestPrice = new LatestPrice(latestPriceJSON)
@@ -79,21 +79,21 @@ router.post("/", (req, res) => {
                             }
 
                             let latestPriceJSON = {
-                                spiceName : spice.spiceName,
-                                spiceCost : spice.spiceCost,
-                                average : spice.average,
-                                status : status,
+                                spiceName: spice.spiceName,
+                                spiceCost: spice.spiceCost,
+                                average: spice.average,
+                                status: status,
                                 scrappedAt: Date.now()
                             }
                             LatestPrice.update({"spiceName": spice.spiceName}, {
                                 $set: latestPriceJSON
-                            },function (err, collection) {
+                            }, function (err, collection) {
                                 console.log(collection);
                                 if (err) res.send({status: FAILURE});
                             })
                         }
 
-                        if (finalJSONArray.length -1 === index) {
+                        if (finalJSONArray.length - 1 === index) {
                             const priceWrapper = new Price({prices: finalJSONArray});
                             priceWrapper.save()
                                 .then(() => {

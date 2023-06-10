@@ -1,6 +1,6 @@
 const COFFEE_PARSE_REGEX = /\d+/g
 
-module.exports =  function (unParsedPrice) {
+module.exports = function (unParsedPrice) {
     if (unParsedPrice === null || unParsedPrice === "")
         return null
 
@@ -13,5 +13,5 @@ module.exports =  function (unParsedPrice) {
             return [numbers[0]]
         }
     }
-    return  null
+    return null
 }
