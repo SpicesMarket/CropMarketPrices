@@ -62,8 +62,7 @@ router.get("/v2/latest", (req, res) => {
             LatestPrice.find({})
                 .then((latestPrices) => {
                     latestPrices.map(function (price) {
-                        let lastWeekPrices = groupedSpices[price.spiceName];
-                        price.graphData = lastWeekPrices;
+                        price.graphData = groupedSpices.get(price.spiceName);
                         return price;
                     });
                     res.send({ status: SUCCESS, data: latestPrices });
