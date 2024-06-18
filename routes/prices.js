@@ -44,33 +44,38 @@ router.get("/latest", (req, res) => {
  */
 router.get("/v2/latest", (req, res) => {
     Price.find()
-        .limit(98) // Last 7 data
+        .sort({ scrappedAt: -1 }) // Sort by scrappedAt in descending order to get the last 98 entries
+        .limit(98)
         .then((lastWeekPrices) => {
-            let ungroupedSpices = []
+            // Sort the fetched prices in ascending order
+            lastWeekPrices.sort((a, b) => new Date(a.scrappedAt) - new Date(b.scrappedAt));
+
+            let ungroupedSpices = [];
             lastWeekPrices.forEach((spicePrices) => {
                 spicePrices.prices.forEach((price) => {
-                    price.scrappedAt = spicePrices.scrappedAt
-                    ungroupedSpices.push(price)
-                })
-            })
-            let groupedSpices = groupBy(ungroupedSpices, spice => spice.spiceName)
+                    price.scrappedAt = spicePrices.scrappedAt;
+                    ungroupedSpices.push(price);
+                });
+            });
+
+            let groupedSpices = groupBy(ungroupedSpices, spice => spice.spiceName);
             LatestPrice.find({})
                 .then((latestPrices) => {
                     latestPrices.map(function (price) {
-                        let lastWeekPrices = groupedSpices.get(price.spiceName)
-                        price.graphData = lastWeekPrices
-                        return price
-                    })
-                    res.send({status: SUCCESS, data: latestPrices})
+                        let lastWeekPrices = groupedSpices[price.spiceName];
+                        price.graphData = lastWeekPrices;
+                        return price;
+                    });
+                    res.send({ status: SUCCESS, data: latestPrices });
                 })
                 .catch(err => {
                     console.log(err);
-                    res.send({status: FAILURE})
+                    res.send({ status: FAILURE });
                 });
         })
         .catch(err => {
             console.log(err);
-            res.send({status: FAILURE})
+            res.send({ status: FAILURE });
         });
 });
 
