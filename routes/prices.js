@@ -45,7 +45,7 @@ router.get("/latest", (req, res) => {
 router.get("/v2/latest", (req, res) => {
     Price.find()
         .sort({scrappedAt: -1}) // Descending
-        .limit(7) // Last 7 data
+        .limit(98) // Last 7 data
         .then((lastWeekPrices) => {
             let ungroupedSpices = []
             lastWeekPrices.forEach((spicePrices) => {
