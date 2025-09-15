@@ -5,6 +5,7 @@ const LatestPriceSchema = mongoose.Schema({
     spiceCost: String,
     average: Number,
     status: Number,
+    priority: Number,
     scrappedAt: {
         type: Date,
         default: Date.now
