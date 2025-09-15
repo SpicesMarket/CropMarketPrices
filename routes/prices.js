@@ -2,80 +2,80 @@ const express = require('express');
 const router = express.Router();
 const Price = require('../models/Price');
 const LatestPrice = require('../models/LatestPrice');
-
-require("../Constants")
+const { SUCCESS, FAILURE } = require('../Constants');
 
 /**
- * A GET request to fetch all spices prices
+ * A GET request to fetch all historical spice prices
  */
-router.get("/", (req, res) => {
-    Price.find()
-        .then((data) => {
-            res.send({status: SUCCESS, data: data})
-        })
-        .catch(err => {
-            console.log(err);
-            res.send({status: FAILURE})
-        });
+router.get('/', async (req, res) => {
+  try {
+    const data = await Price.find();
+    res.send({ status: SUCCESS, data });
+  } catch (err) {
+    console.error('Error fetching all prices:', err);
+    res.send({ status: FAILURE, message: err.message });
+  }
 });
 
 /**
- * A GET request to fetch the latest spices price
+ * A GET request to fetch the latest spices prices with trends
  */
-router.get("/latest", (req, res) => {
-    LatestPrice.find({})
-        .then((data) => {
-            data.map(function (price) {
-                // Todo Remove this has to be handled from the front-end
-                price.average = Math.round(price.average)
-                return price
-            })
-
-            res.send({status: SUCCESS, data: data})
-        })
-        .catch(err => {
-            console.log(err);
-            res.send({status: FAILURE})
-        });
+router.get('/latest', async (req, res) => {
+  try {
+    const data = await LatestPrice.find({}).sort({ scrappedAt: -1 });
+    const formattedData = data.map(price => ({
+      spiceName: price.spiceName,
+      spiceCost: price.spiceCost,
+      average: price.average,
+      status: price.status, // 1 (up/green), -1 (down/red), 0 (steady/grey)
+      priceDiff: price.priceDiff, // Actual difference (e.g., 200 for "Up by ₹200")
+      scrappedAt: price.scrappedAt,
+    }));
+    res.send({ status: SUCCESS, data: formattedData });
+  } catch (err) {
+    console.error('Error fetching latest prices:', err);
+    res.send({ status: FAILURE, message: err.message });
+  }
 });
 
 /**
- * A GET request to fetch the latest spices price
+ * A GET request to fetch the latest spices prices with historical graph data
  */
-router.get("/v2/latest", (req, res) => {
-    Price.find()
-        .sort({ scrappedAt: -1 }) // Sort by scrappedAt in descending order to get the last 98 entries
-        .limit(98)
-        .then((lastWeekPrices) => {
-            // Sort the fetched prices in ascending order
-            lastWeekPrices.sort((a, b) => new Date(a.scrappedAt) - new Date(b.scrappedAt));
+router.get('/v2/latest', async (req, res) => {
+  try {
+    const lastWeekPrices = await Price.find()
+      .sort({ scrappedAt: -1 }) // Sort by scrappedAt in descending order to get the last 98 entries
+      .limit(98);
 
-            let ungroupedSpices = [];
-            lastWeekPrices.forEach((spicePrices) => {
-                spicePrices.prices.forEach((price) => {
-                    price.scrappedAt = spicePrices.scrappedAt;
-                    ungroupedSpices.push(price);
-                });
-            });
+    // Sort the fetched prices in ascending order for graph consistency
+    lastWeekPrices.sort((a, b) => new Date(a.scrappedAt) - new Date(b.scrappedAt));
 
-            let groupedSpices = groupBy(ungroupedSpices, spice => spice.spiceName);
-            LatestPrice.find({})
-                .then((latestPrices) => {
-                    latestPrices.map(function (price) {
-                        price.graphData = groupedSpices.get(price.spiceName);
-                        return price;
-                    });
-                    res.send({ status: SUCCESS, data: latestPrices });
-                })
-                .catch(err => {
-                    console.log(err);
-                    res.send({ status: FAILURE });
-                });
-        })
-        .catch(err => {
-            console.log(err);
-            res.send({ status: FAILURE });
-        });
+    let ungroupedSpices = [];
+    lastWeekPrices.forEach(spicePrices => {
+      spicePrices.prices.forEach(price => {
+        price.scrappedAt = spicePrices.scrappedAt;
+        ungroupedSpices.push(price);
+      });
+    });
+
+    let groupedSpices = groupBy(ungroupedSpices, spice => spice.spiceName);
+    const latestPrices = await LatestPrice.find({}).sort({ scrappedAt: -1 });
+
+    const formattedData = latestPrices.map(price => ({
+      spiceName: price.spiceName,
+      spiceCost: price.spiceCost,
+      average: price.average,
+      status: price.status,
+      priceDiff: price.priceDiff,
+      scrappedAt: price.scrappedAt,
+      graphData: groupedSpices.get(price.spiceName) || [], // Historical data for trends
+    }));
+
+    res.send({ status: SUCCESS, data: formattedData });
+  } catch (err) {
+    console.error('Error fetching latest prices with graph data:', err);
+    res.send({ status: FAILURE, message: err.message });
+  }
 });
 
 /**
@@ -104,6 +104,5 @@ function groupBy(list, keyGetter) {
     });
     return map;
 }
-
 
 module.exports = router;

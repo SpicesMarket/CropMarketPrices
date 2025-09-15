@@ -41,7 +41,10 @@ async function fetchPrices() {
     throw new Error("Invalid API response format");
   }
 
-  return data;
+  return data.map((item) => ({
+    ...item,
+    price_change: item.price_change || "unchanged",
+  }));
 }
 
 /**
@@ -54,7 +57,7 @@ function processPrices(data, scrapeTimestamp) {
   const formattedPrices = [];
 
   for (const item of data) {
-    const { name, price_min, price_max } = item;
+    const { name, price_min, price_max, price_diff, price_change } = item;
     if (!name || price_min == null) {
       console.warn(
         `Skipping invalid item: name=${name}, price_min=${price_min}`
@@ -64,8 +67,8 @@ function processPrices(data, scrapeTimestamp) {
 
     const spiceCost =
       price_max != null
-        ? `₹ ${price_min.toLocaleString()}-${price_max.toLocaleString()}`
-        : `₹ ${price_min.toLocaleString()}`;
+        ? `₹${price_min.toLocaleString()}-${price_max.toLocaleString()}`
+        : `₹${price_min.toLocaleString()}`;
     const prices = price_max != null ? [price_min, price_max] : [price_min];
     const average = calculateAverage(prices);
 
@@ -73,6 +76,8 @@ function processPrices(data, scrapeTimestamp) {
       spiceName: name,
       spiceCost,
       average,
+      priceDiff: price_diff,
+      price_change: price_change || "unchanged",
       scrappedAt: scrapeTimestamp,
     });
   }
@@ -97,21 +102,20 @@ async function updatePriceModels(formattedPrices, scrapeTimestamp) {
       .sort({ scrappedAt: -1 })
       .limit(1);
 
-    let status = IDLE;
-    if (existing) {
-      status =
-        crop.average > existing.average
-          ? INCREASE
-          : crop.average < existing.average
-          ? DECREASE
-          : IDLE;
-    }
+    // Map API's price_change to status
+    const priceChangeToStatus = {
+      increased: INCREASE,
+      decreased: DECREASE,
+      unchanged: IDLE,
+    };
+    const status = priceChangeToStatus[crop.price_change] || IDLE; // Fallback to IDLE if undefined
 
     const latestPriceJSON = {
       spiceName: crop.spiceName,
       spiceCost: crop.spiceCost,
       average: crop.average,
       status,
+      priceDiff: crop.priceDiff, // Store actual difference
       scrappedAt: scrapeTimestamp,
     };
 

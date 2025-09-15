@@ -5,6 +5,7 @@ const LatestPriceSchema = mongoose.Schema({
     spiceCost: String,
     average: Number,
     status: Number,
+    priceDiff: Number,
     priority: Number,
     scrappedAt: {
         type: Date,
@@ -14,6 +15,6 @@ const LatestPriceSchema = mongoose.Schema({
         average: Number,
         scrappedAt: Date
     }]
-})
+});
 
-module.exports = mongoose.model('LatestPrice', LatestPriceSchema)
+module.exports = mongoose.model('LatestPrice', LatestPriceSchema);
