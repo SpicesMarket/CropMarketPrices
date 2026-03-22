@@ -46,7 +46,7 @@ mongoose
   .connect(process.env.DB_CONNECTION, {
     serverSelectionTimeoutMS: 5000,
   })
-  .then(() => console.log("Connected to MongoDB"))
+  .then(() => console.log("Connected to MongoDB at ${process.env.RAILWAY_PUBLIC_DOMAIN}"))
   .catch((err) => {
     console.error("MongoDB Connection Error:", err);
     process.exit(1);
